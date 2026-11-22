@@ -1,4 +1,4 @@
-# CommuData+
+# E-Sante
 
 Plateforme web de collecte et d'analyse des données communautaires de santé (ASBC, paludisme, CPS) pour les districts sanitaires du Burkina Faso.
 
