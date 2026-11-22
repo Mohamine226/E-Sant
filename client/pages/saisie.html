@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Santé | Fiche de stock</title>
+  <meta name="theme-color" content="#0b3a6e">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <main id="contenu">
+    <form id="form-fiche" class="carte" novalidate>
+      <div class="entete-fiche">
+        <div id="bloc-csps" hidden>
+          <label for="csps">CSPS</label>
+          <select id="csps"></select>
+        </div>
+        <div>
+          <label for="type">Type de fiche</label>
+          <select id="type">
+            <option value="hebdo">Hebdomadaire</option>
+            <option value="mensuel">Mensuelle</option>
+          </select>
+        </div>
+        <div>
+          <label for="debut">Du</label>
+          <input id="debut" type="date" required>
+        </div>
+        <div>
+          <label for="fin">Au</label>
+          <input id="fin" type="date" required>
+        </div>
+      </div>
+      <p class="aide" id="aide-periode"></p>
+      <p class="info-statut" id="info-statut" hidden></p>
+
+      <div id="zone-produits"><p class="chargement">Chargement…</p></div>
+
+      <label for="obs" class="etiquette">Observations</label>
+      <textarea id="obs" rows="3" maxlength="2000"></textarea>
+
+      <p class="erreur" id="erreur" hidden></p>
+      <div class="barre-fiche">
+        <button type="button" class="btn-leger" id="btn-brouillon">Enregistrer le brouillon</button>
+        <button type="button" class="btn-primaire" id="btn-transmettre">Transmettre</button>
+      </div>
+    </form>
+  </main>
+  <script type="module" src="/js/saisie.js"></script>
+</body>
+</html>

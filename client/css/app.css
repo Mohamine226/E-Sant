@@ -277,3 +277,43 @@ dialog::backdrop { background: rgba(15, 23, 60, .5); }
   #contenu { padding: 16px; }
   .profil span:first-child { display: none; }
 }
+
+/* ---------- Fiches : saisie et historique ---------- */
+.entete-fiche, .filtres { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; }
+.entete-fiche label, .filtres label, .etiquette { display: block; margin-bottom: 4px; font-size: .85rem; font-weight: 600; }
+.etiquette { margin-top: 18px; }
+.entete-fiche select, .entete-fiche input, .filtres select, #obs {
+  padding: 9px 10px; border: 1px solid var(--bord); border-radius: 8px; font: inherit; background: #fff;
+}
+#obs { width: 100%; resize: vertical; }
+.aide { margin-top: 10px; font-size: .85rem; color: var(--gris); }
+.info-statut { margin-top: 10px; font-weight: 600; color: var(--accent-fonce); }
+.filtres { margin-bottom: 16px; }
+.lien-bouton { text-decoration: none; display: inline-block; margin-left: auto; }
+#zone-produits { margin-top: 16px; }
+.table-saisie input { width: 100%; min-width: 90px; padding: 8px; border: 1px solid var(--bord); border-radius: 6px; font: inherit; }
+.table-saisie th[scope="row"] { text-align: left; font-weight: 600; }
+.barre-fiche { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+
+@media (max-width: 800px) {
+  .table-saisie thead { display: none; }
+  .table-saisie, .table-saisie tbody, .table-saisie tr, .table-saisie td, .table-saisie th { display: block; width: 100%; }
+  .table-saisie tr { border: 1px solid var(--bord); border-radius: 10px; padding: 10px; margin-bottom: 10px; }
+  .table-saisie th[scope="row"] { border: 0; padding: 0 0 8px; background: none; color: var(--marine); text-transform: none; }
+  .table-saisie td { border: 0; padding: 4px 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .table-saisie td::before { content: attr(data-label); font-size: .82rem; color: var(--gris); flex: 1; }
+  .table-saisie td input { width: 120px; min-width: 0; }
+  .barre-fiche button { flex: 1; }
+}
+
+.periode + .periode { margin-top: 26px; }
+.periode h3 { color: var(--marine); font-size: 1rem; margin-bottom: 8px; display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+.periode h3 small { font-weight: 400; color: var(--gris); font-size: .82rem; }
+.lien-bouton[hidden] { display: none; }
+
+.groupe-dates { display: flex; gap: 14px; }
+.groupe-dates[hidden], .barre-export[hidden] { display: none; }
+.groupe-dates input { padding: 9px 10px; border: 1px solid var(--bord); border-radius: 8px; font: inherit; }
+.barre-export { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-bottom: 18px; padding: 12px; background: var(--fond); border-radius: 10px; }
+.barre-export small { color: var(--gris); flex-basis: 100%; }
+.case { display: flex; align-items: center; gap: 6px; font-size: .88rem; }

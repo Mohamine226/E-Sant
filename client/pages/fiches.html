@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Santé | Historique</title>
+  <meta name="theme-color" content="#0b3a6e">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <main id="contenu">
+    <section class="carte">
+      <div class="filtres">
+        <div>
+          <label for="f-type">Type</label>
+          <select id="f-type">
+            <option value="">Tous</option>
+            <option value="hebdo">Hebdomadaire</option>
+            <option value="mensuel">Mensuelle</option>
+          </select>
+        </div>
+        <div>
+          <label for="f-statut">Statut</label>
+          <select id="f-statut">
+            <option value="">Tous</option>
+            <option value="brouillon">Brouillon</option>
+            <option value="transmis">Transmis</option>
+          </select>
+        </div>
+        <div id="bloc-f-csps" hidden>
+          <label for="f-csps">CSPS</label>
+          <select id="f-csps"><option value="">Tous</option></select>
+        </div>
+        <div id="bloc-f-dates" class="groupe-dates" hidden>
+          <div><label for="f-du">Du</label><input id="f-du" type="date"></div>
+          <div><label for="f-au">Au</label><input id="f-au" type="date"></div>
+        </div>
+        <a class="btn-primaire lien-bouton" hidden href="/pages/saisie.html">+ Nouvelle fiche</a>
+      </div>
+      <div class="barre-export" id="barre-export" hidden>
+        <strong>Exporter en Excel</strong>
+        <div>
+          <label for="export-type">Type</label>
+          <select id="export-type">
+            <option value="hebdo">Hebdomadaire</option>
+            <option value="mensuel">Mensuelle</option>
+          </select>
+        </div>
+        <div>
+          <label for="export-jour" id="lib-export-jour">Un jour de la semaine</label>
+          <input id="export-jour" type="date">
+        </div>
+        <label class="case"><input type="checkbox" id="export-brouillons"> Inclure les brouillons</label>
+        <button type="button" class="btn-primaire" id="btn-export">Télécharger</button>
+        <small id="aide-export"></small>
+      </div>
+      <div id="zone"></div>
+    </section>
+  </main>
+  <script type="module" src="/js/fiches.js"></script>
+</body>
+</html>

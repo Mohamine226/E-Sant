@@ -5,9 +5,9 @@ const MENU = [
   { id: "dashboard", texte: "Tableau de bord", href: "/pages/dashboard.html",
     roles: ["agent", "district", "admin"], pret: true },
   { id: "saisie", texte: "Nouvelle fiche", href: "/pages/saisie.html",
-    roles: ["agent", "district", "admin"], pret: false },
+    roles: ["agent", "district", "admin"], pret: true },
   { id: "fiches", texte: "Historique", href: "/pages/fiches.html",
-    roles: ["agent", "district", "admin"], pret: false },
+    roles: ["agent", "district", "admin"], pret: true },
   { id: "admin", texte: "Administration", href: "/pages/admin.html",
     roles: ["admin"], pret: true },
 ];

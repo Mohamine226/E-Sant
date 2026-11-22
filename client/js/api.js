@@ -74,3 +74,15 @@ export async function api(chemin, { methode = "GET", corps } = {}) {
   }
   return donnees;
 }
+
+// "2026-11-16" -> "16/11/2026"
+export function formaterDate(iso) {
+  return iso ? iso.slice(0, 10).split("-").reverse().join("/") : "—";
+}
+
+// "2026-11-22T14:30:12" -> "22/11/2026 14:30"
+export function formaterDateHeure(iso) {
+  if (!iso) return "—";
+  const [jour, heure = ""] = iso.split("T");
+  return `${formaterDate(jour)} ${heure.slice(0, 5)}`.trim();
+}

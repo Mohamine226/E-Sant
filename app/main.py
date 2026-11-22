@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 
 from . import models  # noqa: F401  (enregistre les tables)
 from .database import Base, engine, get_db
-from .routers import auth, csps, produits, utilisateurs
+from .routers import auth, fiches, export, csps, produits, utilisateurs
 
 # Windows peut annoncer les .js avec un mauvais type : les modules seraient refusés
 mimetypes.add_type("application/javascript", ".js")
@@ -21,6 +21,8 @@ app.include_router(auth.router)
 app.include_router(produits.router)
 app.include_router(csps.router)
 app.include_router(utilisateurs.router)
+app.include_router(fiches.router)
+app.include_router(export.router)
 
 
 @app.get("/api/health")
