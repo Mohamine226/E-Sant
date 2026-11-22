@@ -5,9 +5,18 @@ from fastapi.staticfiles import StaticFiles
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 
-from .database import get_db
+from . import models  # noqa: F401  (enregistre les tables)
+from .database import Base, engine, get_db
+from .routers import auth, csps, produits, utilisateurs
+
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="E-Santé")
+
+app.include_router(auth.router)
+app.include_router(produits.router)
+app.include_router(csps.router)
+app.include_router(utilisateurs.router)
 
 
 @app.get("/api/health")

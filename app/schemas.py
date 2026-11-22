@@ -30,6 +30,33 @@ class ProduitOut(SchemaBase):
     code: str
     designation: str
     ordre: int
+    actif: bool
+
+class ProduitCreate(SchemaBase):
+    code: str = Field(min_length=2, max_length=10)
+    designation: str = Field(min_length=2, max_length=200)
+    ordre: int = Field(default=0, ge=0)
+
+
+class ProduitUpdate(SchemaBase):
+    code: Optional[str] = Field(default=None, min_length=2, max_length=10)
+    designation: Optional[str] = Field(default=None, min_length=2, max_length=200)
+    ordre: Optional[int] = Field(default=None, ge=0)
+    actif: Optional[bool] = None
+
+
+class CspsUpdate(SchemaBase):
+    nom: Optional[str] = Field(default=None, min_length=2, max_length=100)
+    asbc_prevus: Optional[int] = Field(default=None, ge=0)
+    actif: Optional[bool] = None
+
+
+class UtilisateurUpdate(SchemaBase):
+    nom_complet: Optional[str] = Field(default=None, min_length=2, max_length=120)
+    role: Optional[Role] = None
+    csps_id: Optional[int] = None
+    actif: Optional[bool] = None
+    motdepasse: Optional[str] = Field(default=None, min_length=8, max_length=128)
 
 
 # ---------- Utilisateurs ----------
