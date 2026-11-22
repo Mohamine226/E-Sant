@@ -1,3 +1,198 @@
-h1{
-    color: blue;
+:root {
+  --marine: #0b3a6e;
+  --bleu: #1e6fd9;
+  --accent: #6a5ce8;      /* bleu-violet (remplace l'ancien vert) */
+  --accent-fonce: #3d44c9;
+  --orange: #f08a24;
+  --texte: #1f2d3d;
+  --gris: #5b6b7c;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--texte);
+  background: #1f2a80;
+}
+
+/* ---------- Mise en page : image à gauche, carte de connexion à droite ---------- */
+.page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 24px clamp(16px, 6vw, 80px);
+}
+
+/* Image plein écran, ancrée à gauche.
+   Si agent.jpg est absent : dégradé bleu-violet. */
+.visuel {
+  position: absolute;
+  inset: 0;
+  background:
+    url("/img/agent.png") left center / cover no-repeat,
+    linear-gradient(200deg, #5b6cf0 0%, #3d44c9 55%, #1f2a80 100%);
+}
+
+/* Carte de connexion posée sur l'image, à droite */
+.panneau {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 420px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, .97);
+  border-radius: 22px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .3);
+  padding: 32px 24px 150px;
+}
+
+.contenu {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+/* ---------- Marque ---------- */
+.logo { width: 130px; height: auto; margin-bottom: 8px; }
+
+.marque {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--marine);
+  letter-spacing: -.5px;
+}
+.marque span { color: var(--accent); }
+
+.accroche {
+  margin: 6px 0 20px;
+  font-size: .95rem;
+  color: var(--gris);
+}
+
+.badge-district {
+  background: var(--marine);
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 16px;
+  border-radius: 10px;
+}
+
+.slogan {
+  margin: 14px 0 20px;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--marine);
+}
+
+/* ---------- Boutons et formulaire ---------- */
+.btn-principal {
+  width: 100%;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-fonce) 100%);
+  color: #fff;
+  border: 0;
+  border-radius: 999px;
+  padding: 13px 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: filter .15s;
+}
+.btn-principal:hover { filter: brightness(1.08); }
+.btn-principal:focus-visible { outline: 3px solid var(--bleu); outline-offset: 2px; }
+.btn-principal:disabled { opacity: .7; cursor: wait; }
+
+.formulaire { text-align: left; }
+.formulaire[hidden], .erreur[hidden], .btn-principal[hidden] { display: none; }
+
+.formulaire label {
+  display: block;
+  margin: 12px 0 4px;
+  font-size: .85rem;
+  font-weight: 600;
+}
+.formulaire input {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #c9d4e0;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+.formulaire input:focus { outline: 2px solid var(--accent); border-color: transparent; }
+.formulaire .btn-principal { margin-top: 18px; }
+
+.erreur { margin-top: 10px; font-size: .85rem; color: #c0392b; }
+
+/* ---------- Atouts ---------- */
+.atouts {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 26px;
+}
+.atouts li {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 6px;
+  background: #f4f6ff;
+  border-radius: 10px;
+  font-size: .72rem;
+  color: var(--marine);
+}
+.atouts svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- Vague décorative ---------- */
+.vague {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 120px;
+  z-index: 1;
+}
+
+/* ---------- Tablette ---------- */
+@media (max-width: 900px) {
+  .page { padding: 24px; }
+  .visuel { background-position: 30% center; }
+}
+
+/* ---------- Téléphone : la photo reste visible en haut, la carte se pose dessus ---------- */
+@media (max-width: 600px) {
+  .page {
+    align-items: flex-end;
+    justify-content: center;
+    padding: 36vh 12px 12px;
+  }
+  .visuel {
+    bottom: auto;
+    height: 62vh;
+    background-size: cover, cover;
+    background-position: 20% top, center;
+  }
+  .panneau {
+    max-width: none;
+    padding: 20px 16px 80px;
+    border-radius: 24px;
+  }
+  .logo { width: 84px; margin-bottom: 4px; }
+  .marque { font-size: 1.8rem; }
+  .accroche { margin: 4px 0 14px; font-size: .88rem; }
+  .slogan { margin: 10px 0 14px; }
+  .atouts { gap: 8px; margin-top: 16px; }
+  .atouts li { padding: 8px 4px; }
 }

@@ -1,16 +1,21 @@
 from pathlib import Path
-from fastapi import FastAPI
+
+from fastapi import Depends, FastAPI
 from fastapi.staticfiles import StaticFiles
+from sqlalchemy import text
+from sqlalchemy.orm import Session
 
-app = FastAPI(title="CommuData+ API")
+from .database import get_db
 
-@app.get("/backend")
-async def accueil():
-    return {"message": "Bienvenue sur CommuData Léo🎖️"}
+app = FastAPI(title="E-Santé")
+
 
 @app.get("/api/health")
-def health():
-    return {"status": "ok"}
+def health(db: Session = Depends(get_db)):
+    db.execute(text("SELECT 1"))
+    return {"status": "ok", "base_de_donnees": "connectée"}
 
+
+# Le site : toujours EN DERNIER
 CLIENT_DIR = Path(__file__).resolve().parent.parent / "client"
 app.mount("/", StaticFiles(directory=CLIENT_DIR, html=True), name="client")
