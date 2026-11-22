@@ -1,3 +1,4 @@
+import mimetypes
 from pathlib import Path
 
 from fastapi import Depends, FastAPI
@@ -8,6 +9,9 @@ from sqlalchemy.orm import Session
 from . import models  # noqa: F401  (enregistre les tables)
 from .database import Base, engine, get_db
 from .routers import auth, csps, produits, utilisateurs
+
+# Windows peut annoncer les .js avec un mauvais type : les modules seraient refusés
+mimetypes.add_type("application/javascript", ".js")
 
 Base.metadata.create_all(bind=engine)
 

@@ -42,6 +42,7 @@ form.addEventListener("submit", async (e) => {
 
     const data = await reponse.json();
     localStorage.setItem("token", data.access_token);
+    localStorage.setItem("utilisateur", JSON.stringify(data.utilisateur));
     window.location.href = "/pages/dashboard.html";
   } catch (err) {
     afficherErreur("Pas de connexion au serveur. Vérifie ton réseau.");

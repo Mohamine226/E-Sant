@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Santé | Administration</title>
+  <meta name="theme-color" content="#0b3a6e">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <main id="contenu">
+    <div class="onglets" role="tablist">
+      <button class="onglet" role="tab" data-onglet="produits" aria-selected="true">Produits</button>
+      <button class="onglet" role="tab" data-onglet="csps" aria-selected="false">CSPS</button>
+      <button class="onglet" role="tab" data-onglet="utilisateurs" aria-selected="false">Utilisateurs</button>
+    </div>
+
+    <section class="carte">
+      <div class="barre-outils">
+        <button class="btn-primaire" id="btn-ajouter" type="button">Ajouter un produit</button>
+      </div>
+      <div id="zone"></div>
+    </section>
+  </main>
+
+  <dialog id="modale">
+    <form id="form-modale" class="form-modale">
+      <h2 id="titre-modale"></h2>
+      <div id="champs-modale"></div>
+      <p class="erreur" id="erreur-modale" hidden></p>
+      <div class="actions-modale">
+        <button type="button" class="btn-leger" id="btn-annuler">Annuler</button>
+        <button type="submit" class="btn-primaire" id="btn-enregistrer">Enregistrer</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="/js/admin.js"></script>
+</body>
+</html>
